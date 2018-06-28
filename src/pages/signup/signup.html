@@ -7,8 +7,11 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Signup</ion-title>
-  </ion-navbar>
+  		<button ion-button menuToggle>
+      		<ion-icon name="menu"></ion-icon>
+    	</button>
+    	<ion-title>Signup</ion-title>
+  	</ion-navbar>
 
 </ion-header>
 
@@ -24,7 +27,7 @@
 	      <ion-input type="text" placeholder="Full name"></ion-input>
 	    </ion-item>
 	    <ion-item>
-		    <ion-label>Gender</ion-label>
+		    <ion-label> Gender</ion-label>
 		    <ion-select [(ngModel)]="gender">
 		      <ion-option value="female">Female</ion-option>
 		      <ion-option value="male">Male</ion-option>
@@ -46,4 +49,8 @@
 	      <ion-input type="text" placeholder="Repeat Password"></ion-input>
 	    </ion-item>
   	</ion-list>
+  	<button block="" color="primary" ion-button="" class="disable-hover button button-ios button-default button-default-ios           button-block button-block-ios button-ios-primary">
+    	<span class="button-inner">Sign Up</span>
+    	<div class="button-effect"></div>
+  	</button>
 </ion-content>
