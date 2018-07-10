@@ -19,6 +19,14 @@
 <ion-content padding>
 	<ion-list>
 
+		<ion-item>
+		  <ion-label> Sign Up As</ion-label>
+		    <ion-select [(ngModel)]="login">
+		      <ion-option value="counsellor">counsellor</ion-option>
+		      <ion-option value="patient">Patient</ion-option>
+				</ion-select>
+	  	</ion-item>
+
 	    <ion-item>
 	      <ion-input type="text" placeholder="Username"></ion-input>
 	    </ion-item>
@@ -49,7 +57,7 @@
 	      <ion-input type="text" placeholder="Repeat Password"></ion-input>
 	    </ion-item>
   	</ion-list>
-  	<button block="" color="primary" ion-button="" class="disable-hover button button-ios button-default button-default-ios           button-block button-block-ios button-ios-primary">
+  	<button block="" color="primary" ion-button="" (click)="goToCounsellor()" class="disable-hover button button-ios button-default button-default-ios           button-block button-block-ios button-ios-primary">
     	<span class="button-inner">Sign Up</span>
     	<div class="button-effect"></div>
   	</button>

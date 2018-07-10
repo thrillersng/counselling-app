@@ -13,30 +13,41 @@
 </ion-header-->
 
 
-<ion-content padding>
+<ion-content>
   <ion-slides pager="true">
- 
-    <ion-slide>
-      <img src="images/slide1.png" />
+   
+    <ion-slide class="slide-1">
+      <a href="#" (click)="goToHome()" class="skip">Skip</a>
+      <h2>Counselling App</h2>
+      <p>For Guidance</p>
     </ion-slide>
    
-    <ion-slide>
-      <img src="images/slide2.png" />
+    <ion-slide class="slide-3">
+      <a href="#" (click)="goToHome()" class="skip">Skip</a>
+      <h2>Patient</h2>
+      <p>Book appointment / Talk now</p>
     </ion-slide>
-   
-    <ion-slide>
-      <img src="images/slide3.png" />
-    </ion-slide>
-   
-    <ion-slide>
+
+    <ion-slide class="slide-4">
+        <a href="#" (click)="goToHome()" class="skip">Skip</a>
+        <h3>Find Counsellor from a list</h3>
+      </ion-slide>
+
+      <ion-slide class="slide-5">
+          <a href="#" (click)="goToHome()" class="skip">Skip</a>
+          <h3>Select / View Counsellor</h3>
+        </ion-slide>
+
+    <ion-slide class="slide-2">
+        <a href="#" (click)="goToHome()" class="skip">Skip</a>
       <ion-row>
         <ion-col>
-          <img src="images/slide4.png" />
+          <h2>Final Year Project</h2>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
-          <button ion-button color="light" (click)="goToHome()">Start Using My App</button>
+          <button ion-button color="primary" (click)="goToHome()">Start Using My App</button>
         </ion-col>
       </ion-row>
     </ion-slide>

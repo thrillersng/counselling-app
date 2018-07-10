@@ -5,11 +5,19 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { DashboardPage } from '../pages/dashboard/dashboard';
+import { CounsellorPage } from '../pages/counsellor/counsellor';
 import { ListPage } from '../pages/list/list';
 import { SignUpPage } from '../pages/signup/signup';
+import { LogInPage } from '../pages/login/login';
 import { IntroPage } from '../pages/intro/intro';
 import { SessionsPage } from '../pages/sessions/sessions';
 import { AppointmentsPage } from '../pages/appointments/appointments';
+import { ConfirmPage } from '../pages/confirm/confirm';
+import { SinglePage } from '../pages/single/single';
+import { ApprovedListPage } from '../pages/approvedlist/approvedlist';
+import { DiaryPage } from '../pages/diary/diary';
+import { EntryPage } from '../pages/entry/entry';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -17,12 +25,19 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp,
     HomePage,
+    DashboardPage,
+    CounsellorPage,
     ListPage,
     SignUpPage,
     IntroPage,
-    SignUpPage,  
+    LogInPage,  
     SessionsPage,
     AppointmentsPage,
+    ConfirmPage,
+    SinglePage,
+    ApprovedListPage,
+    DiaryPage,
+    EntryPage,
     IntroPage
   ],
   imports: [
@@ -33,11 +48,19 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
+    DashboardPage,
+    CounsellorPage,
     ListPage,
     SignUpPage,
+    LogInPage,
     IntroPage,
     SessionsPage,
     AppointmentsPage,
+    ConfirmPage,
+    SinglePage,
+    ApprovedListPage,
+    DiaryPage,
+    EntryPage,
     IntroPage
   ],
   providers: [

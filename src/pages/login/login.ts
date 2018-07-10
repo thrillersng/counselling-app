@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { CounsellorPage } from '../counsellor/counsellor';
+import { DashboardPage } from '../dashboard/dashboard';
+import { SignUpPage } from '../signup/signup';
 
 /**
  * Generated class for the SignupPage page.
@@ -11,18 +12,19 @@ import { CounsellorPage } from '../counsellor/counsellor';
 
 @IonicPage()
 @Component({
-  selector: 'page-signup',
-  templateUrl: 'signup.html',
+  selector: 'page-login',
+  templateUrl: 'login.html',
 })
-export class SignUpPage {
+export class LogInPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage');
+  goToDashboard(){
+    this.navCtrl.setRoot(DashboardPage);
   }
-  goToCounsellor(){
-    this.navCtrl.setRoot(CounsellorPage);
+  goToSignUp(){
+    this.navCtrl.setRoot(SignUpPage);
   }
+
 }
