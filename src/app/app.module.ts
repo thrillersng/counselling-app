@@ -21,6 +21,19 @@ import { EntryPage } from '../pages/entry/entry';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyCQw5OF2J1yjveLPb6S--ivUbNY2MrpJrc",
+  authDomain: "counselling-app-b28a2.firebaseapp.com",
+  databaseURL: "https://counselling-app-b28a2.firebaseio.com",
+  projectId: "counselling-app-b28a2",
+  storageBucket: "counselling-app-b28a2.appspot.com",
+  messagingSenderId: "536705275771"
+};
+
 @NgModule({
   declarations: [
     MyApp,
@@ -43,6 +56,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
+  
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -66,6 +83,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
