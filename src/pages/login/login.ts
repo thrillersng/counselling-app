@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { DashboardPage } from '../dashboard/dashboard';
 import { SignUpPage } from '../signup/signup';
+import { CounsellorPage } from '../counsellor/counsellor';
 
 /**
  * Generated class for the SignupPage page.
@@ -24,31 +25,28 @@ export class LogInPage {
       this.login = {};
     }
   
-    loginWithEmail() {
+    signIn() {
       console.log(this.login);
       if(!this.login.email || !this.login.password || !this.login.usertype) {
         alert("Please enter required information");
         return;
       }
   
-      this.afAuth.auth.createUserWithEmailAndPassword(this.login.email, this.login.password).then(
+      this.afAuth.auth.signInWithEmailAndPassword(this.login.email, this.login.password).then(
         auth => {
           console.log(auth);
-          alert("Login successful");
+          if(this.login.usertype == 'counsellor') {
+            this.navCtrl.setRoot(CounsellorPage);
+          } else if (this.login.usertype == 'patient') {
+            this.navCtrl.setRoot(DashboardPage);
+          }
+          
         }
       ).catch(function(error) {
         // Handle Errors here.
-        var errorCode = error.code;
         var errorMessage = error.message;
-        if (errorCode == 'auth/weak-password') {
-          alert('The password is too weak.');
-        } else if (errorCode == 'auth/email-already-in-use') {
-          alert('Email already in use.');
-        } else if (errorCode == 'auth/invalid-email') {
-          alert('Invalid email address.');
-        } else {
-          alert(errorMessage);
-        }
+        alert(errorMessage);
+        
         console.log(error);
       });
     

@@ -24,16 +24,16 @@
 		  </ion-item>
 	  
 		  <ion-item>
-			<ion-input type="password" placeholder="Password"></ion-input>
+			<ion-input type="password" name="password" [(ngModel)]="login.password" placeholder="Password"></ion-input>
 		  </ion-item>
 	    <ion-item>
 		    <ion-label> Login As</ion-label>
-		    <ion-select [(ngModel)]="login">
+		    <ion-select name="usertype" [(ngModel)]="login.usertype">
 		      <ion-option value="counsellor">counsellor</ion-option>
 		      <ion-option value="patient">Patient</ion-option>
 			</ion-select>
 	  	</ion-item>
-  	<button block="" color="primary" ion-button="" (click)="goToDashboard()" class="disable-hover button button-ios button-default button-default-ios           button-block button-block-ios button-ios-primary">
+  	<button block="" color="primary" ion-button="" (click)="signIn()" class="disable-hover button button-ios button-default button-default-ios           button-block button-block-ios button-ios-primary">
     	<span class="button-inner">Login</span>
     	<div class="button-effect"></div>
 		</button>
