@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, Self } from '@angular/core';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { CounsellorPage } from '../counsellor/counsellor';
@@ -20,18 +20,25 @@ import { UtilityProvider } from '../../providers/utility/utility';
 })
 export class SignUpPage {
   signup;
+  loading: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public afAuth: AngularFireAuth, afDB: AngularFireDatabase, public utility: UtilityProvider) {
+    public afAuth: AngularFireAuth, afDB: AngularFireDatabase, public utility: UtilityProvider,
+    private loadingCtrl: LoadingController) {
     this.signup = {};
-    // console.log(this.utility.saveDoc({usertype: 'counsellor'}, 'users/001'));
+    
+    this.loading = this.loadingCtrl.create({
+      content: 'Signing up...'
+  });
   }
 
   signupWithEmail() {
+    this.loading.present();
     console.log(this.signup);
     if(!this.signup.email || !this.signup.password || !this.signup.usertype) {
       alert("Please enter required information");
       return;
     }
+    const self = this;
 
     this.afAuth.auth.createUserWithEmailAndPassword(this.signup.email, this.signup.password).then(
       auth => {
@@ -39,10 +46,17 @@ export class SignUpPage {
         const user = auth.user;
         const uid = user.uid;
         delete this.signup.password;
-        this.signup.uid = uid;
-        this.utility.saveDoc('users', uid, this.signup).then( u=> {
+        this.signup.uid = uid;        
+        this.utility.saveDoc('users', uid, self.signup).then( u=> {
           alert("Signup successful");
-          this.goToDashboard();
+          self.loading.dismiss().then(() => {
+            self.goToDashboard();
+          });
+          
+        }).catch( error => {
+          self.loading.dismiss().then(() => {
+            console.log(error);
+          });
         });
         
       }
@@ -59,7 +73,7 @@ export class SignUpPage {
       } else {
         alert(errorMessage);
       }
-      console.log(error);
+      self.loading.dismiss();
     });
   }
   goToCounsellor(){

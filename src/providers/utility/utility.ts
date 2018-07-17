@@ -16,12 +16,13 @@ export class UtilityProvider {
     console.log('Hello UtilityProvider Provider');
   }
 
-  saveDoc(col, doc, item) {
-  	return this.db.collection(col).doc(doc).set(item);
+  saveDoc(col, doc, data) {
+    //console.log(`Col: ${col}, Doc: ${doc}, Data: ${data}`);
+  	return this.db.collection(col).doc(doc).set(data);
   }
 
-  updateDoc(col, doc, item) {
-  	return this.db.collection(col).doc(doc).update(item);
+  updateDoc(col, doc, data) {
+  	return this.db.collection(col).doc(doc).update(data);
   }
 
 }
