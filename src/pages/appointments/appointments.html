@@ -5,63 +5,28 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
   <ion-navbar>
-    <ion-title>appointments</ion-title>
+    <ion-buttons end>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+  
+    <ion-title>Appointments</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-	<div padding>
-  <ion-segment [(ngModel)]="pet">
-    <ion-segment-button value="Monday">
-      Monday
-    </ion-segment-button>
-    <ion-segment-button value="Tuesday">
-      Tuesday
-    </ion-segment-button>
-    <ion-segment-button value="Tuesday">
-      Wednesday
-   	</ion-segment-button>
-   	<ion-segment-button value="Tuesday">
-      Thursday
-   	</ion-segment-button>
-   	<ion-segment-button value="Tuesday">
-      Friday
-   	</ion-segment-button>
-   	<ion-segment-button value="Tuesday">
-      Saturday
-   	</ion-segment-button>
-   	<ion-segment-button value="Tuesday">
-      Sunday
-   	</ion-segment-button>
-  </ion-segment>
 
-</div>
-
-<div [ngSwitch]="pet">
-  <ion-list *ngSwitchCase="'puppies'">
+  <ion-list>
     <ion-item>
-      <ion-thumbnail item-start>
-        <img src="img/thumbnail-puppy-1.jpg">
-      </ion-thumbnail>
-      <h2>Ruby</h2>
+      <ion-avatar item-start>
+        <img src="img/stallone.jpg">
+      </ion-avatar>
+      <h2>Mrs. Akokuma</h2>
     </ion-item>
-    ...
   </ion-list>
 
-  <ion-list *ngSwitchCase="'kittens'">
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="img/thumbnail-kitten-1.jpg">
-      </ion-thumbnail>
-      <h2>Luna</h2>
-    </ion-item>
-    ...
-  </ion-list>
-</div>
 </ion-content>
