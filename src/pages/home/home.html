@@ -10,9 +10,12 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <ion-item class="text" *ngFor="let item of items | async">
-			{{item | json}}
+  <ion-grid>
+    <ion-item>
+      Counselling Sessions
 		</ion-item>
-  </ion-list>
+    <ion-item>
+      Notifications
+    </ion-item>
+  </ion-grid>
 </ion-content>

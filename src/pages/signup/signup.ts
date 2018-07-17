@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, Self } from '@angular/core';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { CounsellorPage } from '../counsellor/counsellor';
 import { DashboardPage } from '../dashboard/dashboard';
+import { UtilityProvider } from '../../providers/utility/utility';
 
 /**
  * Generated class for the SignupPage page.
@@ -19,22 +20,45 @@ import { DashboardPage } from '../dashboard/dashboard';
 })
 export class SignUpPage {
   signup;
+  loading: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public afAuth: AngularFireAuth, afDB: AngularFireDatabase) {
+    public afAuth: AngularFireAuth, afDB: AngularFireDatabase, public utility: UtilityProvider,
+    private loadingCtrl: LoadingController) {
     this.signup = {};
+    
+    this.loading = this.loadingCtrl.create({
+      content: 'Signing up...'
+  });
   }
 
   signupWithEmail() {
+    this.loading.present();
     console.log(this.signup);
     if(!this.signup.email || !this.signup.password || !this.signup.usertype) {
       alert("Please enter required information");
       return;
     }
+    const self = this;
 
     this.afAuth.auth.createUserWithEmailAndPassword(this.signup.email, this.signup.password).then(
       auth => {
-        console.log(auth);
-        alert("Signup successful");
+        console.log(auth.user);
+        const user = auth.user;
+        const uid = user.uid;
+        delete this.signup.password;
+        this.signup.uid = uid;        
+        this.utility.saveDoc('users', uid, self.signup).then( u=> {
+          alert("Signup successful");
+          self.loading.dismiss().then(() => {
+            self.goToDashboard();
+          });
+          
+        }).catch( error => {
+          self.loading.dismiss().then(() => {
+            console.log(error);
+          });
+        });
+        
       }
     ).catch(function(error) {
       // Handle Errors here.
@@ -49,13 +73,17 @@ export class SignUpPage {
       } else {
         alert(errorMessage);
       }
-      console.log(error);
+      self.loading.dismiss();
     });
   }
   goToCounsellor(){
     this.navCtrl.setRoot(CounsellorPage);
   }
   goToDashboard(){
-    this.navCtrl.setRoot(DashboardPage);
+    if(!this.signup.usertype)
+      return;
+
+    if(this.signup.usertype == 'counsellor')
+      this.navCtrl.setRoot(DashboardPage);
   }
 }
