@@ -19,14 +19,15 @@
 
 
 <ion-content padding>
-
-  <ion-list>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="img/stallone.jpg">
-      </ion-avatar>
-      <h2>Mrs. Akokuma</h2>
-    </ion-item>
-  </ion-list>
-
-</ion-content>
+    <form (ngSubmit)="enterNickname()">
+      <ion-list>
+        <ion-item>
+          <ion-label floating>Enter your Nickname</ion-label>
+          <ion-input type="text" [(ngModel)]="data.nickname" name="nickname" required=""></ion-input>
+        </ion-item>
+        <ion-item>
+          <button ion-button full round color="secondary" type="submit">Enter</button>
+        </ion-item>
+      </ion-list>
+    </form>
+  </ion-content>

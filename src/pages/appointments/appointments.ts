@@ -15,11 +15,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AppointmentsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+ 
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AppointmentsPage');
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    
+  }
+  data = { nickname:"" };
+
+  enterNickname() {
+    this.navCtrl.setRoot(AppointmentsPage, {
+      nickname: this.data.nickname
+    });
+  }
+  joinRoom(key) {
+    this.navCtrl.setRoot(AppointmentsPage, {
+      key:key,
+      nickname:this.navParams.get("nickname")
+    });
+  }
+  
+  appointments() {
+    this.navCtrl.push(AppointmentsPage);
   }
 
 }
+
+
