@@ -9,6 +9,9 @@ import { DashboardPage } from '../pages/dashboard/dashboard';
 import { CounsellorPage } from '../pages/counsellor/counsellor';
 import { ListPage } from '../pages/list/list';
 import { SignUpPage } from '../pages/signup/signup';
+import { SettingsPage } from '../pages/settings/settings';
+import { HelpPage } from '../pages/help/help';
+import { NotificationPage } from '../pages/notification/notification';
 import { LogInPage } from '../pages/login/login';
 import { IntroPage } from '../pages/intro/intro';
 import { SessionsPage } from '../pages/sessions/sessions';
@@ -42,6 +45,9 @@ export const firebaseConfig = {
     CounsellorPage,
     ListPage,
     SignUpPage,
+    HelpPage,
+    SettingsPage,
+    NotificationPage,
     IntroPage,
     LogInPage,  
     SessionsPage,
@@ -69,6 +75,9 @@ export const firebaseConfig = {
     CounsellorPage,
     ListPage,
     SignUpPage,
+    HelpPage,
+    SettingsPage,
+    NotificationPage,
     LogInPage,
     IntroPage,
     SessionsPage,

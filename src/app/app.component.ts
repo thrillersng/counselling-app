@@ -16,7 +16,10 @@ import { ConfirmPage } from '../pages/confirm/confirm';
 import { SinglePage } from '../pages/single/single';
 import { ApprovedListPage } from '../pages/approvedlist/approvedlist';
 import { DiaryPage } from '../pages/diary/diary';
-import { EntryPage } from '../pages/entry/entry'; 
+import { EntryPage } from '../pages/entry/entry';
+import { HelpPage } from '../pages/help/help';
+import { SettingsPage } from '../pages/settings/settings';
+import { NotificationPage } from '../pages/notification/notification'; 
 
 @Component({
   templateUrl: 'app.html'
@@ -37,6 +40,9 @@ export class MyApp {
       { title: 'Dashboard', component: DashboardPage },
       { title: 'Counsellor', component: CounsellorPage },
       { title: 'List', component: ListPage },
+      { title: 'Settings', component: SettingsPage },
+      { title: 'Help', component: HelpPage },
+      { title: 'Notification', component: NotificationPage },
       { title: 'SignUp', component: SignUpPage },
       { title: 'LogIn', component: LogInPage },
       { title: 'Sessions', component: SessionsPage },
