@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { CounsellorPage } from '../counsellor/counsellor';
 import { DashboardPage } from '../dashboard/dashboard';
+import { UtilityProvider } from '../../providers/utility/utility';
 
 /**
  * Generated class for the SignupPage page.
@@ -20,8 +21,9 @@ import { DashboardPage } from '../dashboard/dashboard';
 export class SignUpPage {
   signup;
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public afAuth: AngularFireAuth, afDB: AngularFireDatabase) {
+    public afAuth: AngularFireAuth, afDB: AngularFireDatabase, public utility: UtilityProvider) {
     this.signup = {};
+    // console.log(this.utility.saveDoc({usertype: 'counsellor'}, 'users/001'));
   }
 
   signupWithEmail() {
@@ -33,8 +35,16 @@ export class SignUpPage {
 
     this.afAuth.auth.createUserWithEmailAndPassword(this.signup.email, this.signup.password).then(
       auth => {
-        console.log(auth);
-        alert("Signup successful");
+        console.log(auth.user);
+        const user = auth.user;
+        const uid = user.uid;
+        delete this.signup.password;
+        this.signup.uid = uid;
+        this.utility.saveDoc('users', uid, this.signup).then( u=> {
+          alert("Signup successful");
+          this.goToDashboard();
+        });
+        
       }
     ).catch(function(error) {
       // Handle Errors here.
@@ -56,6 +66,10 @@ export class SignUpPage {
     this.navCtrl.setRoot(CounsellorPage);
   }
   goToDashboard(){
-    this.navCtrl.setRoot(DashboardPage);
+    if(!this.signup.usertype)
+      return;
+
+    if(this.signup.usertype == 'counsellor')
+      this.navCtrl.setRoot(DashboardPage);
   }
 }
