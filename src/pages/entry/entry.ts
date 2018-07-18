@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AppointmentsPage } from '../appointments/appointments';
+import { NavController, NavParams } from 'ionic-angular';
 import { SinglePage } from '../single/single';
 import * as firebase from 'Firebase';
 
