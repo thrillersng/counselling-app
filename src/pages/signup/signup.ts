@@ -32,6 +32,9 @@ export class SignUpPage {
   }
 
   signupWithEmail() {
+    if(this.loading != undefined){
+      this.loading.dismiss();
+    }
     this.loading.present();
     console.log(this.signup);
     if(!this.signup.email || !this.signup.password || !this.signup.usertype) {
